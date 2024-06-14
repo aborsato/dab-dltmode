@@ -1,0 +1,15 @@
+# The main pipeline for dlt_switchmode
+resources:
+  pipelines:
+    dlt_switchmode_pipeline:
+      name: dlt_switchmode_pipeline
+      catalog: shared
+      target: dlt_switchmode_${bundle.environment}
+      serverless: true
+      continuous: false
+      libraries:
+        - notebook:
+            path: ../src/dlt_pipeline.ipynb
+
+      configuration:
+        bundle.sourcePath: /Workspace/${workspace.file_path}/src
